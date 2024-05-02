@@ -2,18 +2,17 @@ import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { BASE_URL } from "../config";
 import { toast } from "react-toastify";
-// import { authContext } from "../context/authContext.js";
-
+import { authContext } from "../context/authContext.jsx";
+import HashLoader from "react-spinners/HashLoader.js"
 const Login = () => {
-  
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
 
-  const [loading, setLoading] = useState(false)
-  const navigate = useNavigate()
-  // const {dispatch} = useContext(authContext)
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const { dispatch } = useContext(authContext);
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -30,7 +29,7 @@ const Login = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
-      });  
+      });
 
       const result = await res.json();
 
@@ -38,16 +37,16 @@ const Login = () => {
         throw new Error(result.message);
       }
 
-      // dispatch({
-      //   type: "LOGIN_SUCCESS",
-      //   payload: {
-      //     user: result.data,
-      //     role: result.role,
-      //     token: result.token,
-      //   }
-      // })
+      dispatch({
+        type: "LOGIN_SUCCESS",
+        payload: {
+          user: result.data,
+          role: result.role,
+          token: result.token,
+        },
+      });
 
-      // console.log(result, "login data")
+      console.log(result, "login data");
 
       setLoading(false);
       toast.success(result.message);
@@ -97,7 +96,7 @@ const Login = () => {
               type="submit"
               className="w-full bg-primaryColor text-white text-[18px] leading-[30px] rounded-lg px-4 py-3"
             >
-              Login
+              {loading ? <HashLoader size={25} color="#fff"/> : "Login"}
             </button>
           </div>
 
