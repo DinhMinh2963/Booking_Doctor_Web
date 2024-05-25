@@ -46,11 +46,12 @@ const Login = () => {
         },
       });
 
-      console.log(result, "login data");
+      console.log("login data",result.role);
 
       setLoading(false);
       toast.success(result.message);
-      navigate("/home");
+      {result.role === "admin" ? navigate("/admin") : navigate("/home")}
+      
     } catch (err) {
       toast.error(err.message);
       setLoading(false);

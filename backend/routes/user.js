@@ -8,7 +8,7 @@ router.get("/:id",authenticate, restrict(["patient"]), getSingleUser)
 router.get("/", authenticate, restrict(["admin"]), getAllUser)
 router.put("/:id", authenticate, restrict(["patient"]), updateUser)
 router.delete("/:id", authenticate, restrict(["patient"]), deleteUser)
-router.get("/profile/me", authenticate, restrict(["patient"]), getUserProfile)
-router.get("appoinments/my-appoinments", authenticate, restrict(["patient"]), getMyAppointments)
+router.get("/profile/me", authenticate, restrict(["patient", "admin"]), getUserProfile)
+router.get("/appoinments/my-appoinments", authenticate, restrict(["patient"]), getMyAppointments)
 
 export default router

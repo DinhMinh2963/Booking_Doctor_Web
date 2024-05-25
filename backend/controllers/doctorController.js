@@ -1,6 +1,23 @@
 import Doctor from "../models/DoctorSchema.js";
 import Booking from "../models/BookingSchema.js";
 
+export const updateApproved=async(req,res)=>{
+    const id=req.params.id
+    const {isApproved}=req.body
+    try {
+        await Doctor.findByIdAndUpdate(id,{
+            isApproved
+        })
+        res.status(200).json({
+            success: true,
+            message: "Successfully updated"
+        })
+    } catch (error) {
+        res.status(500).json({success: false, message: "Failed to update"})
+    }
+    }
+
+
 export const updateDoctor = async (req, res) => {
     const id = req.params.id
 
@@ -48,28 +65,31 @@ export const getSingleDoctor= async (req, res) => {
             data: doctor,
         })
     } catch (err) {
-        res.status(404).json({success: false, message: "No doctor found"})
+        res.status(404).json({success: false})
     }
 }
 
 export const getAllDoctor = async (req, res) => {
 
     try {
-        const {query} = req.query
         let doctors
-
-        if(query){
-            doctors = await Doctor.find({
-                isApproved: "approved",
-                $or: [
-                    {name: {$regex: query, $option: "i"}},
-                    {specialization: {$regex: query, $option: "i"}},
-                ],
-            }).select("-password") 
-        } else {
-            doctors = await Doctor.find({isApproved: "approved"}).select("-password")
-        }
+     
+        doctors = await Doctor.find().select("-password") 
         
+        res.status(200).json({
+            success: true,
+            message: "Doctors found",
+            data: doctors,
+        })
+    } catch (err) {
+        res.status(404).json({success: false})
+    }
+}
+
+export const getAllDoctorApproved = async (req, res) => {
+    try {
+        
+        const doctors=await Doctor.find({isApproved:'approved'})
 
         res.status(200).json({
             success: true,
@@ -77,7 +97,7 @@ export const getAllDoctor = async (req, res) => {
             data: doctors,
         })
     } catch (err) {
-        res.status(404).json({success: false, message: "Not found"})
+        return res.send(err)
     }
 }
 

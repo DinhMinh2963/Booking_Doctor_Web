@@ -60,7 +60,7 @@ const Header = () => {
           {/* ======= Menu ======= */}
           <div className="navigation" ref={menuRef} onClick={toggleMenu}>
             <ul className="menu flex items-center gap-[2.7rem]">
-              {navLink.map((link, index) => (
+              {role === "admin" ? '' : navLink.map((link, index) => (
                 <li key={index}>
                   <NavLink
                     to={link.path}
@@ -85,7 +85,9 @@ const Header = () => {
                   to={`${
                     role === "doctor"
                       ? "/doctors/profile/me"
-                      : "/users/profile/me"
+                      : role === "patient"
+                      ? "/users/profile/me"
+                      : "/admin/profile/me"
                   }`}
                 >
                   <figure className="w-[35px] h-[35px] rounded-full cursor-pointer">

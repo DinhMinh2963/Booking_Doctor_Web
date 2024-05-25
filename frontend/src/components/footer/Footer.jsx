@@ -4,6 +4,7 @@ import logo from "../../assets/images/logo.png";
 import { RiLinkedinFill } from "react-icons/ri";
 import { AiFillYoutube, AiFillGithub, AiFillInstagram } from "react-icons/ai";
 
+
 const socialLinks = [
   {
     path: "https://www.youtube.com",
@@ -74,7 +75,9 @@ const quickLinks03 = [
 
 const Footer = () => {
   const year = new Date().getFullYear();
+  
   return (
+  
     <footer className="pb-16 pt-10">
       <div className="container">
         <div className="flex justify-between flex-col md:flex-row flex-wrap gap-[30px]">
