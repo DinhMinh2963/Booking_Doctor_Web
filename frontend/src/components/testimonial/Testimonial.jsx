@@ -59,7 +59,7 @@ const Testimonial = () => {
               <img src={patientAvatar} alt="" />
               <div>
                 <h4 className="text-[18px] leading-[30px] font-semibold text-headingColor">
-                  Trần Xuân Nam
+                  Trần Nam Long
                 </h4>
                 <div className="flex items-center gap-[2px]">
                     <HiStar className="text-yellowColor w-[18px] h-5"/>
@@ -72,7 +72,7 @@ const Testimonial = () => {
             </div>
 
             <p className="text-[16px] leading-7 mt-4 text-textColor font-[400]">
-                "I have taken medical services from them. They treat so well and they are providing the best medical services"
+                "I have taken medical services from them. Good doctor!"
             </p>
           </div>
         </SwiperSlide>
@@ -83,7 +83,7 @@ const Testimonial = () => {
               <img src={patientAvatar} alt="" />
               <div>
                 <h4 className="text-[18px] leading-[30px] font-semibold text-headingColor">
-                  Trần Xuân Nam
+                  Nguyễn Văn Ngọc
                 </h4>
                 <div className="flex items-center gap-[2px]">
                     <HiStar className="text-yellowColor w-[18px] h-5"/>
@@ -96,7 +96,7 @@ const Testimonial = () => {
             </div>
 
             <p className="text-[16px] leading-7 mt-4 text-textColor font-[400]">
-                "I have taken medical services from them. They treat so well and they are providing the best medical services"
+                "The best medical services. I really sastified."
             </p>
           </div>
         </SwiperSlide>

@@ -28,15 +28,17 @@ const Home = () => {
             <div>
               <div className="lg:w-[570px]">
                 <h1 className="text-[36px] leading-[46px] text-headingColor font-[800] md:text-[60px] md:leading-[70px]">
-                  Chúng tôi mong muốn bệnh nhân có một cuộc sống khỏe mạnh hơn.
+                  We help patients live a healthy, longer life.
                 </h1>
 
                 <p className="text__para">
-                  Bác sĩ là những người vì mục đích cao đẹp và sự sống của bệnh
-                  nhân mà họ luôn làm việc với trách nhiệm và tâm huyết.
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  Veritatis officiis quaerat saepe mollitia deserunt cupiditate,
+                  eum sequi magni tempore. Suscipit porro sed sit maxime aliquam
+                  tenetur adipisci, vitae doloribus voluptate!
                 </p>
 
-                <button className="btn">Đặt lịch khám</button>
+                <button className="btn">Request an Appointment</button>
               </div>
 
               {/* ======= Hero counter ======= */}
@@ -46,7 +48,7 @@ const Home = () => {
                     30+
                   </h2>
                   <span className="w-[100px] h-2 bg-yellowColor rounded-full block mt-[-14px]"></span>
-                  <p className="text__para">Năm kinh nghiệm</p>
+                  <p className="text__para">Years of Experience</p>
                 </div>
 
                 <div>
@@ -54,7 +56,7 @@ const Home = () => {
                     15+
                   </h2>
                   <span className="w-[100px] h-2 bg-purpleColor rounded-full block mt-[-14px]"></span>
-                  <p className="text__para">Cơ sở</p>
+                  <p className="text__para">Clinic Location</p>
                 </div>
 
                 <div>
@@ -62,21 +64,17 @@ const Home = () => {
                     100%
                   </h2>
                   <span className="w-[100px] h-2 bg-irisBlueColor rounded-full block mt-[-14px]"></span>
-                  <p className="text__para">Bệnh nhân hài lòng</p>
+                  <p className="text__para">Patient Sastifaction</p>
                 </div>
               </div>
             </div>
             {/* ======== Hero content ========= */}
             <div className="flex gap-[30px] justify-end">
-              <img className="w-full" src={heroImg01} alt="Ảnh bác sĩ" />
+              <img className="w-full" src={heroImg01} alt="" />
             </div>
             <div className="mt-[30px]">
-              <img
-                className="w-full mb-[30px]"
-                src={heroImg02}
-                alt="Ảnh bác sĩ"
-              />
-              <img className="w-full" src={heroImg03} alt="Ảnh bác sĩ" />
+              <img className="w-full mb-[30px]" src={heroImg02} alt="" />
+              <img className="w-full" src={heroImg03} alt="" />
             </div>
           </div>
         </div>
@@ -87,11 +85,11 @@ const Home = () => {
         <div className="container">
           <div className="lg:w-[470px] mx-auto">
             <h2 className="heading text-center">
-              Cung cấp các dịch vụ y tế tốt nhất
+              Providing the best medical services
             </h2>
             <p className="text__para text-center">
-              Cung cấp dịch vụ chăm sóc khỏe hàng đầu, giúp bệnh nhân an tâm về
-              sức khỏe của mình.
+              World-class care for everyone. Our healthy System offers
+              unmatched, expert health care.
             </p>
           </div>
         </div>
@@ -104,12 +102,11 @@ const Home = () => {
 
             <div className="mt-[30px]">
               <h2 className="text-[26px] leading-9 text-headingColor font-[700] text-center">
-                Tìm kiếm bác sĩ
+                Find a Doctor
               </h2>
-              <p className="text-[16px] leading-7 text-textColor font-[400] mt-4 text-center">
-                chăm sóc đẳng cấp thế giới cho mọi người. Hệ thống y tế của
-                chúng tôi cung cấp dịch vụ chăm sóc sức khỏe chuyên nghiệp, chưa
-                từng có. Từ phòng thí nghiệm đến phòng khám
+              <p className="text-[16px] leading-7 text-textColor font-[400] mt-4 text-center px-10">
+                World-class care for everyone. Our healthy System offers
+                unmatched, expert health care. From the lab to clinic.
               </p>
 
               <Link
@@ -129,12 +126,11 @@ const Home = () => {
 
             <div className="mt-[30px]">
               <h2 className="text-[26px] leading-9 text-headingColor font-[700] text-center">
-                Đặt lịch hẹn
+                Book Appointment
               </h2>
-              <p className="text-[16px] leading-7 text-textColor font-[400] mt-4 text-center">
-                chăm sóc đẳng cấp thế giới cho mọi người. Hệ thống y tế của
-                chúng tôi cung cấp dịch vụ chăm sóc sức khỏe chuyên nghiệp, chưa
-                từng có. Từ phòng thí nghiệm đến phòng khám
+              <p className="text-[16px] leading-7 text-textColor font-[400] mt-4 text-center px-10">
+                World-class care for everyone. Our healthy System offers
+                unmatched, expert health care. From the lab to clinic.
               </p>
 
               <Link
@@ -154,12 +150,11 @@ const Home = () => {
 
             <div className="mt-[30px]">
               <h2 className="text-[26px] leading-9 text-headingColor font-[700] text-center">
-                Liên hệ với chúng tôi
+                Find a Location
               </h2>
-              <p className="text-[16px] leading-7 text-textColor font-[400] mt-4 text-center">
-                chăm sóc đẳng cấp thế giới cho mọi người. Hệ thống y tế của
-                chúng tôi cung cấp dịch vụ chăm sóc sức khỏe chuyên nghiệp, chưa
-                từng có. Từ phòng thí nghiệm đến phòng khám
+              <p className="text-[16px] leading-7 text-textColor font-[400] mt-4 text-center px-10">
+                World-class care for everyone. Our healthy System offers
+                unmatched, expert health care. From the lab to clinic.
               </p>
 
               <Link
@@ -180,10 +175,10 @@ const Home = () => {
       <section>
         <div className="container">
           <div className="xl:w-[470px] mx-auto">
-            <h2 className="heading text-center">Dịch vụ y tế của chúng tôi</h2>
+            <h2 className="heading text-center">Our medical services</h2>
             <p className="text__para text-center">
-              Cung cấp dịch vụ chăm sóc khỏe hàng đầu, giúp bệnh nhân an tâm về
-              sức khỏe của mình.
+              World-class care for everyone. Our healthy System offers
+              unmatched, expert health care.
             </p>
           </div>
 
@@ -199,22 +194,24 @@ const Home = () => {
             {/* ===== Feature content ===== */}
             <div className="xl:w-[670px]">
               <h2 className="heading">
-                Được điều trị <br /> bất cứ lúc nào
+                Get virtual treatment <br /> anytime
               </h2>
 
               <ul className="pl-4">
-                <li className="text__para">1. Hẹn lịch khám trực tiếp.</li>
                 <li className="text__para">
-                  2. Tìm kiếm bác sĩ ở đây và liên hệ với văn phòng của họ.
+                  1. Schedule the appointment directly.
                 </li>
                 <li className="text__para">
-                  3. Sử dụng công cụ đặt lịch online để đặt lịch khám bất cứ lúc
-                  nào.
+                  2. Search for your physician here, and contact their offices.
+                </li>
+                <li className="text__para">
+                  3. View our physicians who are accepting new patients, use the
+                  online scheduling tool to select an appointment time.
                 </li>
               </ul>
 
               <Link to="/">
-                <button className="btn">Tìm hiểu thêm</button>
+                <button className="btn">Learn More</button>
               </Link>
             </div>
 
@@ -267,10 +264,10 @@ const Home = () => {
       <section>
         <div className="container">
           <div className="xl:w-[470px] mx-auto">
-            <h2 className="heading text-center">Các bác sĩ hàng đầu</h2>
+            <h2 className="heading text-center">Our great doctors</h2>
             <p className="text__para text-center">
-              Cung cấp dịch vụ chăm sóc khỏe hàng đầu, giúp bệnh nhân an tâm về
-              sức khỏe của mình.
+              World-class care for everyone. Our healthy System offers
+              unmatched, expert health care.
             </p>
           </div>
 
@@ -287,7 +284,7 @@ const Home = () => {
             </div>
 
             <div className="w-full md:w-1/2">
-              <h2 className="heading">Các câu hỏi phổ biến</h2>
+              <h2 className="heading">Most question by our beloved patients</h2>
 
               <FaqList />
             </div>
@@ -302,8 +299,8 @@ const Home = () => {
           <div className="xl:w-[470px] mx-auto">
             <h2 className="heading text-center">What our patient say</h2>
             <p className="text__para text-center">
-              Cung cấp dịch vụ chăm sóc khỏe hàng đầu, giúp bệnh nhân an tâm về
-              sức khỏe của mình.
+              World-class care for everyone. Our healthy System offers
+              unmatched, expert health care.
             </p>
           </div>
 

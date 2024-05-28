@@ -19,21 +19,15 @@ const About = () => {
           {/* ======= About content ======= */}
           <div className="w-full lg:w-1/2 xl:w-[670px] order-1 lg:order-2">
             <h2 className="heading">
-              Tự hào là một trong những đơn vị hàng đầu
+              Proud to be one of the nations best
             </h2>
             <p className="text__para">
-              là bệnh viện đa khoa nổi tiếng tại khu vực phía Bắc, được đông đảo
-              người dân tin tưởng lựa chọn. Với lịch sử phát triển và những
-              thành tựu đáng kể trong lĩnh vực y học, bệnh viện đã từng bước
-              khẳng định vai trò quan trọng trong việc cung cấp dịch vụ chăm sóc
-              sức khỏe cộng đồng.
+              For thirty years in a row, U.S. News & World Report has recognized as one of the best publics hospitals in the Nation and #1 in Ha Noi. Lorem ipsum dolor sit, amet consectetur adipisicing elit.
             </p>
             <p className="text__para mt-[30px]">
-              Nếu đang có nhu cầu khám chữa bệnh tại đây, bạn có thể tham khảo
-              lịch khám cũng như quy trình khám bệnh trong bài viết dưới đây
-              nhé!
+              Our best is something we strive for each day, caring for our patients-not looking back at what we accomplished but towards what we can do tomorrow. Proving the best. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde, alias at! Ipsum eveniet iure ut dolore mollitia odit, velit quisquam alias impedit asperiores distinctio voluptatibus aliquam ex. Et, iste consequuntur. 
             </p>
-            <Link to="/"><button className="btn">Tìm hiểu kĩ hơn</button></Link>
+            <Link to="/"><button className="btn">Learn More</button></Link>
           </div>
         </div>
       </div>

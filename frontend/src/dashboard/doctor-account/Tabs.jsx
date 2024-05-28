@@ -2,14 +2,56 @@ import { useContext } from "react";
 import { BiMenu } from "react-icons/bi";
 import { authContext } from "../../context/authContext";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL, token } from "../../config";
+import useGetProfile from "../../hooks/useFetchData.jsx";
+import { toast } from "react-toastify";
 
 const Tabs = ({ tab, setTab }) => {
   const { dispatch } = useContext(authContext);
   const navigate = useNavigate();
 
+  const {
+    data: doctorData
+  } = useGetProfile(`${BASE_URL}/doctors/profile/me`);
+
+  const doctorId = doctorData._id;
+
   const handleLogout = () => {
     dispatch({ type: "LOGOUT" });
     navigate("/");
+  };
+
+  const handleDeleteAccount = async (e) => {
+    e.preventDefault();
+
+    const userConfirmed = confirm(
+      "Are you sure you want to delete your account? This action cannot be undone."
+    );
+    if (userConfirmed) {
+      try {
+        const res = await fetch(`${BASE_URL}/doctors/${doctorId}`, {
+          method: "delete",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ doctorId }),
+        });
+
+        const result = await res.json();
+
+        if (!res.ok) {
+          throw Error(result.message);
+        }
+
+        toast.success(result.message);
+        dispatch({ type: "LOGOUT" });
+      } catch (err) {
+        toast.error(err.message);
+      }
+    } else {
+      console.log("Account deletion cancelled.");
+    }
   };
   return (
     <div>
@@ -55,7 +97,7 @@ const Tabs = ({ tab, setTab }) => {
           >
             Logout
           </button>
-          <button className="w-full bg-red-600 p-3 mt-4 text-[16px] leading-7 rounded-md text-white">
+          <button className="w-full bg-red-600 p-3 mt-4 text-[16px] leading-7 rounded-md text-white" onClick={handleDeleteAccount}>
             Delete Account
           </button>
         </div>

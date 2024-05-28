@@ -69,9 +69,6 @@ const AdminProfile = () => {
                 >
                   Logout
                 </button>
-                <button className="w-full bg-red-600 p-3 mt-4 text-[16px] leading-7 rounded-md text-white">
-                  Delete Account
-                </button>
               </div>
             </div>
           </div>

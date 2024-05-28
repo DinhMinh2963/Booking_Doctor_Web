@@ -7,16 +7,18 @@ import { Profile } from "./Profile";
 import { Records } from "./Records";
 
 import useGetProfile from "../../hooks/useFetchData.jsx";
-import { BASE_URL } from "../../config";
+import { BASE_URL, token } from "../../config";
 
 import Loading from "../../components/loader/Loading.jsx";
 import Error from "../../components/error/Error.jsx";
+import { useNavigate } from "react-router-dom";
+import {toast} from "react-toastify"
 
 const MyAccount = () => {
   const { dispatch } = useContext(authContext);
   const [tab, setTab] = useState("bookings");
 
-  const { user, role, token } = useContext(authContext);
+  const { role } = useContext(authContext);
 
   const {
     data: userData,
@@ -24,17 +26,51 @@ const MyAccount = () => {
     error,
   } = useGetProfile(`${BASE_URL}/users/profile/me`);
 
-  console.log(userData);
+  const userId = userData._id;
 
   const handleLogout = () => {
     dispatch({ type: "LOGOUT" });
   };
+
+  const handleDeleteAccount = async (e) => {
+    e.preventDefault();
+
+    const userConfirmed = confirm(
+      "Are you sure you want to delete your account? This action cannot be undone."
+    );
+    if (userConfirmed) {
+      try {
+        const res = await fetch(`${BASE_URL}/users/${userId}`, {
+          method: "delete",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ userId }),
+        });
+
+        const result = await res.json();
+
+        if (!res.ok) {
+          throw Error(result.message);
+        }
+
+        toast.success(result.message);
+        dispatch({ type: "LOGOUT" });
+      } catch (err) {
+        toast.error(err.message);
+      }
+    } else {
+      console.log("Account deletion cancelled.");
+    }
+  };
+
   return (
     <section>
       <div className="max-w-[1170px] px-5 mx-auto">
         {loading && !error && <Loading />}
 
-        {error && !loading && <Error errMessage={error}/>}
+        {error && !loading && <Error errMessage={error} />}
 
         {!loading && !error && (
           <div className="grid md:grid-cols-3 gap-10">
@@ -71,35 +107,39 @@ const MyAccount = () => {
                 >
                   Logout
                 </button>
-                <button className="w-full bg-red-600 p-3 mt-4 text-[16px] leading-7 rounded-md text-white">
+                <button
+                  className="w-full bg-red-600 p-3 mt-4 text-[16px] leading-7 rounded-md text-white"
+                  onClick={handleDeleteAccount}
+                >
                   Delete Account
                 </button>
               </div>
             </div>
-            
-            {role === "patient" ? (<div className="md:col-span-2 md:px-[30px]">
-              <div>
-                <button
-                  onClick={() => setTab("bookings")}
-                  className={`${
-                    tab === "bookings" &&
-                    "bg-primaryColor text-white font-normal"
-                  }p-2 mr-5 px-5 rounded-md text-headingColor font-semibold text-[16px] leading-10 border border-solid border-primaryColor`}
-                >
-                  My Bookings
-                </button>
 
-                <button
-                  onClick={() => setTab("settings")}
-                  className={`${
-                    tab === "settings" &&
-                    "bg-primaryColor text-white font-normal"
-                  }p-2 mr-5 px-5 rounded-md text-headingColor font-semibold text-[16px] leading-10 border border-solid border-primaryColor`}
-                >
-                  Profile Setting
-                </button>
+            {role === "patient" ? (
+              <div className="md:col-span-2 md:px-[30px]">
+                <div>
+                  <button
+                    onClick={() => setTab("bookings")}
+                    className={`${
+                      tab === "bookings" &&
+                      "bg-primaryColor text-white font-normal"
+                    }p-2 mr-5 px-5 rounded-md text-headingColor font-semibold text-[16px] leading-10 border border-solid border-primaryColor`}
+                  >
+                    My Bookings
+                  </button>
 
-                <button
+                  <button
+                    onClick={() => setTab("settings")}
+                    className={`${
+                      tab === "settings" &&
+                      "bg-primaryColor text-white font-normal"
+                    }p-2 mr-5 px-5 rounded-md text-headingColor font-semibold text-[16px] leading-10 border border-solid border-primaryColor`}
+                  >
+                    Profile Setting
+                  </button>
+
+                  {/* <button
                   onClick={() => setTab("records")}
                   className={`${
                     tab === "records" &&
@@ -107,14 +147,16 @@ const MyAccount = () => {
                   }p-2 px-5 rounded-md text-headingColor font-semibold text-[16px] leading-10 border border-solid border-primaryColor`}
                 >
                   Medical Record
-                </button>
-              </div>
+                </button> */}
+                </div>
 
-              {tab === "bookings" && <MyBookings />}
-              {tab === "settings" && <Profile user={userData}/>}
-              {tab === "records" && <Records />}
-            </div>) : ''}
-            
+                {tab === "bookings" && <MyBookings />}
+                {tab === "settings" && <Profile user={userData} />}
+                {/* {tab === "records" && <Records />} */}
+              </div>
+            ) : (
+              ""
+            )}
           </div>
         )}
       </div>
